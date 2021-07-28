@@ -32,93 +32,17 @@ def get_data(certain_file):
     return data
 
 
-def plot_obstacle_pos(input_data):
+def plot_func(input_data):
+    """
+    use mp to plot obstacles and center lane.
+    :param input_data: data got from file.
+    :return: null
+    """
     time_arr = input_data[:, 0].tolist()
-    right_obstacle_pos_arr_y = input_data[:, 1].tolist()
-    right_obstacle_pos_arr_x = input_data[:, 2].tolist()
-    left_obstacle_pos_arr_y = input_data[:, 3].tolist()
-    left_obstacle_pos_arr_x = input_data[:, 4].tolist()
-    cipv_obstacle_pos_arr_y = input_data[:, 5].tolist()
-    cipv_obstacle_pos_arr_x = input_data[:, 6].tolist()
-
-    figure()
-    subplot(2, 1, 1)
-    plot(time_arr, right_obstacle_pos_arr_x, "r")
-    title("right obstacle position X")
-    xlabel("time(t)")
-    ylabel("right_obstacle_pos_X")
-    grid()
-
-    subplot(2, 1, 2)
-    plot(time_arr, right_obstacle_pos_arr_y, "b")
-    title("right obstacle position Y")
-    xlabel("time(t)")
-    ylabel("right_obstacle_pos_Y")
-    grid()
-
-    figure()
-    subplot(2, 1, 1)
-    plot(time_arr, cipv_obstacle_pos_arr_x, "r")
-    title("cipv obstacle position X")
-    xlabel("time(t)")
-    ylabel("cipv_obstacle_pos_X")
-    grid()
-
-    subplot(2, 1, 2)
-    plot(time_arr, cipv_obstacle_pos_arr_y, "b")
-    title("cipv obstacle position Y")
-    xlabel("time(t)")
-    ylabel("cipv_obstacle_pos_Y")
-    grid()
-
-    figure()
-    subplot(2, 1, 1)
-    plot(time_arr, left_obstacle_pos_arr_x, "r")
-    title("left obstacle position X")
-    xlabel("time(t)")
-    ylabel("left_obstacle_pos_X")
-    grid()
-
-    subplot(2, 1, 2)
-    plot(time_arr, left_obstacle_pos_arr_y, "b")
-    title("left obstacle position Y")
-    xlabel("time(t)")
-    ylabel("left_obstacle_pos_Y")
-    grid()
-
-    figure()
-    title("obstacle position")
-    x_max = max(max(right_obstacle_pos_arr_x, left_obstacle_pos_arr_x, cipv_obstacle_pos_arr_x))
-    x_min = min(min(right_obstacle_pos_arr_x, left_obstacle_pos_arr_x, cipv_obstacle_pos_arr_x))
-    y_max = max(max(right_obstacle_pos_arr_y, left_obstacle_pos_arr_y, cipv_obstacle_pos_arr_y))
-    y_min = min(min(right_obstacle_pos_arr_y, left_obstacle_pos_arr_y, cipv_obstacle_pos_arr_y))
-
-    for i in range(len(time_arr)- 1):
-        scat_plot_right = scatter(right_obstacle_pos_arr_x[i], right_obstacle_pos_arr_y[i], c='purple')
-        scat_plot_left = scatter(left_obstacle_pos_arr_x[i], left_obstacle_pos_arr_y[i], c='red')
-        scat_plot_center = scatter(cipv_obstacle_pos_arr_x[i], cipv_obstacle_pos_arr_y[i], c='black')
-
-        axes_scat = gca()
-        axes_scat.set_xlim([x_min, x_max])
-        axes_scat.set_ylim([y_min, y_max])
-        xlabel("x")
-        ylabel("y")
-        legend([scat_plot_right, scat_plot_left, scat_plot_center], ["right obstacle point", "left obstacle point",
-                                                                     "center obstacle point"], loc="upper right",
-               scatterpoints=1)
-        pause(time_arr[i+1] - time_arr[i])              # time control
-        scat_plot_right.remove()
-        scat_plot_left.remove()
-        scat_plot_center.remove()
-    pass
-
-
-def plot_cubic_curve(input_data):
-    time_arr = input_data[:, 0].tolist()
-    cubic_curve_C3 = input_data[:, 7].tolist()
-    cubic_curve_C2 = input_data[:, 8].tolist()
-    cubic_curve_C1 = input_data[:, 9].tolist()
-    cubic_curve_C0 = input_data[:, 10].tolist()
+    cubic_curve_c3 = input_data[:, 7].tolist()
+    cubic_curve_c2 = input_data[:, 8].tolist()
+    cubic_curve_c1 = input_data[:, 9].tolist()
+    cubic_curve_c0 = input_data[:, 10].tolist()
 
     right_obstacle_pos_arr_y = input_data[:, 1].tolist()
     right_obstacle_pos_arr_x = input_data[:, 2].tolist()
@@ -133,30 +57,48 @@ def plot_cubic_curve(input_data):
 
     figure()
     title("center lane")
-    xlabel("x")
-    ylabel("y")
+    xlabel("y")
+    ylabel("x")
+    grid()
     axes_scat = gca()
-    axes_scat.set_xlim([x_min, x_max])
-    axes_scat.set_ylim([y_min, y_max])
+    axes_scat.set_xlim([y_min, y_max])
+    axes_scat.set_ylim([x_min, x_max])
 
     x = np.linspace(x_min, x_max, 100)
     for i in range(len(time_arr) - 1):
         # cubic curve at present
-        c0 = cubic_curve_C0[i]
-        c1 = cubic_curve_C1[i]
-        c2 = cubic_curve_C2[i]
-        c3 = cubic_curve_C3[i]
+        c0 = cubic_curve_c0[i]
+        c1 = cubic_curve_c1[i]
+        c2 = cubic_curve_c2[i]
+        c3 = cubic_curve_c3[i]
+
         # cubic curve representation
         y = c0 + c1*x + c2*x**2 + c3*x**3
 
-        center_lane_plot, = plot(x, y, "r.")
+        # plot obstacle position
+        scat_plot_right = scatter(right_obstacle_pos_arr_y[i], right_obstacle_pos_arr_x[i], c='purple')
+        scat_plot_left = scatter(left_obstacle_pos_arr_y[i], left_obstacle_pos_arr_x[i], c='red')
+        scat_plot_center = scatter(cipv_obstacle_pos_arr_y[i], cipv_obstacle_pos_arr_x[i], c='black')
+        center_lane_plot, = plot(y, x, "r*")
+
+
+        legend([scat_plot_right, scat_plot_left, scat_plot_center, center_lane_plot], ["right obstacle point",
+                                                                                       "left obstacle point",
+                                                                                       "center obstacle point",
+                                                                                       "center lane"],
+               loc="upper right",
+               scatterpoints=1)
+
         pause(time_arr[i+1] - time_arr[i])
         center_lane_plot.remove()
+        scat_plot_right.remove()
+        scat_plot_left.remove()
+        scat_plot_center.remove()
 
 
 if __name__ == "__main__":
     file = get_file()
     my_data = get_data(file)
-    plot_obstacle_pos(my_data)
-    plot_cubic_curve(my_data)
+    # plot_obstacle_pos(my_data)
+    plot_func(my_data)
     pass
