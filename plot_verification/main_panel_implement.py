@@ -4,6 +4,7 @@ import plot_file
 import pandas as pd
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer
+import time
 
 # -*- coding: utf-8 -*-
 
@@ -37,7 +38,7 @@ class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(707, 510)
+        MainWindow.resize(915, 672)
         MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -52,7 +53,7 @@ class Ui_MainWindow(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.formLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(30, 70, 411, 171))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(30, 70, 401, 195))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout_2 = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -63,50 +64,50 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.label.setFont(font)
         self.label.setObjectName("label")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label)
         self.lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit.setObjectName("lineEdit")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
         self.label_3 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_3)
+        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_3)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_2.setObjectName("lineEdit_2")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
+        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
         self.label_4 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
-        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_4)
+        self.formLayout_2.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_4)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_3.setObjectName("lineEdit_3")
-        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
+        self.formLayout_2.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
         self.label_5 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
-        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_5)
+        self.formLayout_2.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_5)
         self.lineEdit_4 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_4.setObjectName("lineEdit_4")
-        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
+        self.formLayout_2.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
         self.label_6 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_6)
+        self.formLayout_2.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_6)
         self.lineEdit_9 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_9.setObjectName("lineEdit_9")
-        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEdit_9)
+        self.formLayout_2.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.lineEdit_9)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.pushButton_2 = QtWidgets.QPushButton(self.formLayoutWidget)
@@ -116,12 +117,16 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout.addWidget(self.pushButton)
         self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.LabelRole, self.horizontalLayout)
+        self.progressBar = QtWidgets.QProgressBar(self.formLayoutWidget)
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setObjectName("progressBar")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.progressBar)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 707, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 915, 23))
         self.menuBar.setObjectName("menuBar")
         self.menu = QtWidgets.QMenu(self.menuBar)
         self.menu.setObjectName("menu")
@@ -133,7 +138,7 @@ class Ui_MainWindow(object):
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.import_data)
-        self.timer.start(2000)  # need modified
+        self.timer.start(0)
 
         self.lineEdit.setReadOnly(True)
         self.lineEdit_2.setReadOnly(True)
@@ -159,13 +164,14 @@ class Ui_MainWindow(object):
         self.actionAbout.setText(_translate("MainWindow", "About"))
 
     def import_data(self):
-        if self.flag < len(self.time_arr):
+        if self.flag < len(self.time_arr) - 1:
             self.lineEdit.setText(str(self.scc_deg_ref_steering_angel_arr[self.flag]))
             self.lineEdit_2.setText(str(self.acc_veh_dyn_yaw_rate_raw_arr[self.flag]))
             self.lineEdit_3.setText(str(self.scc_hands_off_count_arr[self.flag]))
             self.lineEdit_4.setText(str(self.scc_lane_model_lane_width_cross_point_arr[self.flag]))
             self.lineEdit_9.setText(str(self.scc_das_lka_state_arr[self.flag]))
             self.flag = self.flag + 1
+            time.sleep(self.time_arr[self.flag + 1] - self.time_arr[self.flag])
         else:
             pass
 

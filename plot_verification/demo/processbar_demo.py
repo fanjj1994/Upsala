@@ -56,6 +56,7 @@ class Example(QWidget):
             self.timer.start(100, self)
             self.btn.setText('停止')
 
+
 if __name__ == '__main__':
      app = QApplication(sys.argv)
      ex = Example()

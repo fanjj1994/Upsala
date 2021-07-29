@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>707</width>
-    <height>510</height>
+    <width>915</width>
+    <height>672</height>
    </rect>
   </property>
   <property name="cursor">
@@ -45,12 +45,12 @@
      <rect>
       <x>30</x>
       <y>70</y>
-      <width>411</width>
-      <height>171</height>
+      <width>401</width>
+      <height>195</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
-     <item row="1" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
@@ -63,10 +63,10 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="4" column="1">
       <widget class="QLineEdit" name="lineEdit"/>
      </item>
-     <item row="2" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="label_3">
        <property name="font">
         <font>
@@ -79,10 +79,10 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="5" column="1">
       <widget class="QLineEdit" name="lineEdit_2"/>
      </item>
-     <item row="3" column="0">
+     <item row="6" column="0">
       <widget class="QLabel" name="label_4">
        <property name="font">
         <font>
@@ -95,10 +95,10 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="6" column="1">
       <widget class="QLineEdit" name="lineEdit_3"/>
      </item>
-     <item row="4" column="0">
+     <item row="7" column="0">
       <widget class="QLabel" name="label_5">
        <property name="font">
         <font>
@@ -111,10 +111,10 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="7" column="1">
       <widget class="QLineEdit" name="lineEdit_4"/>
      </item>
-     <item row="5" column="0">
+     <item row="8" column="0">
       <widget class="QLabel" name="label_6">
        <property name="font">
         <font>
@@ -127,7 +127,7 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="8" column="1">
       <widget class="QLineEdit" name="lineEdit_9"/>
      </item>
      <item row="0" column="0">
@@ -148,6 +148,13 @@
        </item>
       </layout>
      </item>
+     <item row="3" column="0">
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -157,7 +164,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>707</width>
+     <width>915</width>
      <height>23</height>
     </rect>
    </property>
